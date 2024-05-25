@@ -1,0 +1,16 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gui.ydd.mapper.UserGroupMapper">
+    <select id="selectUserGroupDetails"
+            resultType="com.gui.ydd.entity.UserGroupDetails">
+        SELECT ug.group_id,
+               ug.group_name,
+               ug.description,
+               u.username AS leader_name,
+               ug.createdate
+        FROM user_groups ug
+                 JOIN users u ON ug.user_id = u.user_id
+        WHERE ug.group_id = #{groupId}
+    </select>
+</mapper>

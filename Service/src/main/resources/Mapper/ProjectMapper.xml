@@ -1,0 +1,17 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gui.ydd.mapper.ProjectMapper">
+    <select id="selectProjectDetails"
+            resultType="com.gui.ydd.entity.ProjectDetails">
+        SELECT p.project_id,
+               p.project_name,
+               p.description,
+               p.createdate,
+               gp.group_project_id,
+               gp.group_id
+        FROM projects p
+                 JOIN group_projects gp ON p.project_id = gp.project_id
+        WHERE p.project_id = #{projectId}
+    </select>
+</mapper>

@@ -1,0 +1,20 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gui.ydd.mapper.ReviewMapper">
+    <select id="selectReviewDetails"
+            resultType="com.gui.ydd.entity.ReviewDetails">
+        SELECT r.review_id,
+               r.score,
+               r.comment,
+               r.createdate,
+               u.username AS reviewer_name,
+               gp.group_id,
+               gp.project_id
+        FROM reviews r
+                 JOIN users u ON r.reviewer_id = u.user_id
+                 JOIN group_projects gp
+                      ON r.group_project_id = gp.group_project_id
+        WHERE r.review_id = #{reviewId}
+    </select>
+</mapper>
