@@ -13,6 +13,4 @@ public interface ArchiveService extends IService<Archive> {
     void updateArchive(Archive archive);
     void deleteArchive(int archiveId);
     ArchiveDetails getDetails(int archiveId);
-
-
 }
