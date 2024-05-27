@@ -6,6 +6,6 @@ import com.gui.ydd.entity.UserGroupDetails;
 
 import java.util.List;
 
-public interface UserGroupService extends BaseService<UserGroup> {
+public interface UserGroupService extends BaseService<UserGroup,UserGroupDetails> {
     UserGroupDetails getDetails(int groupId);
 }

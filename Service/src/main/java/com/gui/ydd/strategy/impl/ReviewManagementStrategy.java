@@ -55,6 +55,8 @@ public class ReviewManagementStrategy implements ManagementStrategy<Review> {
                 return response;
             case "getDetails":
                 return reviewService.getDetails((Integer) params.get("id"));
+            case "getAllDetails":
+                return reviewService.getAllDetails();
             default:
                 throw new IllegalArgumentException("Invalid operation: " + operation);
         }

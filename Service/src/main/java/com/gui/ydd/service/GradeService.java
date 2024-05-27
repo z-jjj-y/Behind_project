@@ -6,6 +6,5 @@ import com.gui.ydd.entity.GradeDetails;
 
 import java.util.List;
 
-public interface GradeService extends BaseService<Grade> {
-    GradeDetails getDetails(int gradeId);
+public interface GradeService extends BaseService<Grade,GradeDetails> {
 }

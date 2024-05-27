@@ -6,6 +6,5 @@ import com.gui.ydd.entity.ArchiveDetails;
 
 import java.util.List;
 
-public interface ArchiveService extends BaseService<Archive> {
-    ArchiveDetails getDetails(int archiveId);
+public interface ArchiveService extends BaseService<Archive,ArchiveDetails> {
 }

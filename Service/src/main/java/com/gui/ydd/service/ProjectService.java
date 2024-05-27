@@ -6,6 +6,5 @@ import com.gui.ydd.entity.ProjectDetails;
 
 import java.util.List;
 
-public interface ProjectService extends BaseService<Project> {
-    ProjectDetails getDetails(int projectId);
+public interface ProjectService extends BaseService<Project,ProjectDetails> {
 }

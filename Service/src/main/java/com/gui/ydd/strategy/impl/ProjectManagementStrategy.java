@@ -51,6 +51,8 @@ public class ProjectManagementStrategy implements ManagementStrategy<Project> {
                 return response;
             case "getDetails":
                 return projectService.getDetails((Integer) params.get("id"));
+            case "getAllDetails":
+                return projectService.getAllDetails();
             default:
                 throw new IllegalArgumentException("Invalid operation: " + operation);
         }

@@ -10,9 +10,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ReviewServiceImpl extends BaseServiceImpl<ReviewMapper, Review> implements ReviewService {
+public class ReviewServiceImpl extends BaseServiceImpl<ReviewMapper, Review, ReviewDetails> implements ReviewService {
+
     @Override
-    public ReviewDetails getDetails(int reviewId) {
-        return getBaseMapper().selectDetailsById(reviewId);
+    public ReviewDetails getDetails(int id) {
+        return baseMapper.selectDetailsById(id);
+    }
+
+    @Override
+    public List<ReviewDetails> getAllDetails() {
+        return baseMapper.selectAllDetails();
     }
 }

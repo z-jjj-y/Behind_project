@@ -20,7 +20,7 @@ public class UserGroupManagementStrategy implements ManagementStrategy<UserGroup
     @Override
     public Object execute(String operation, Map<String, Object> params) {
         UserGroupService userGroupService = serviceFactory.createUserGroupService();
-        Map<String,Object> response  = new HashMap<>();
+        Map<String, Object> response = new HashMap<>();
         switch (operation) {
             case "getAll":
                 return userGroupService.getAll();
@@ -35,7 +35,7 @@ public class UserGroupManagementStrategy implements ManagementStrategy<UserGroup
                         .createdate(new Date())
                         .build();
                 userGroupService.create(userGroup);
-                response.put("message","Create user group successful");
+                response.put("message", "Create user group successful");
                 return response;
             case "update":
                 UserGroup updateUserGroup = new UserGroup.Builder()
@@ -47,14 +47,16 @@ public class UserGroupManagementStrategy implements ManagementStrategy<UserGroup
                         .createdate(new Date())
                         .build();
                 userGroupService.update(updateUserGroup);
-                response.put("message","Update user group successful");
+                response.put("message", "Update user group successful");
                 return response;
             case "delete":
                 userGroupService.delete((Integer) params.get("id"));
-                response.put("message","Delete user group successful");
+                response.put("message", "Delete user group successful");
                 return response;
             case "getDetails":
                 return userGroupService.getDetails((Integer) params.get("id"));
+            case "getAllDetails":
+                return userGroupService.getAllDetails();
             default:
                 throw new IllegalArgumentException("Invalid operation: " + operation);
         }

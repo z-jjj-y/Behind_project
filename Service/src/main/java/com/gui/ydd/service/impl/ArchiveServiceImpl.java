@@ -6,11 +6,19 @@ import com.gui.ydd.mapper.ArchiveMapper;
 import com.gui.ydd.service.ArchiveService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
-public class ArchiveServiceImpl extends BaseServiceImpl<ArchiveMapper, Archive> implements ArchiveService {
-    @Override
-    public ArchiveDetails getDetails(int archiveId) {
-        return getBaseMapper().selectDetailsById(archiveId);
-    }
+public class ArchiveServiceImpl extends BaseServiceImpl<ArchiveMapper, Archive,ArchiveDetails> implements ArchiveService {
+
+        @Override
+        public ArchiveDetails getDetails(int id) {
+            return baseMapper.selectDetailsById(id);
+        }
+
+        @Override
+        public List<ArchiveDetails> getAllDetails() {
+            return baseMapper.selectAllDetails();
+        }
 }

@@ -53,6 +53,8 @@ public class ArchiveStrategy implements ManagementStrategy<Archive> {
                 return response;
             case "getDetails":
                 return archiveService.getDetails((Integer) params.get("id"));
+            case "getAllDetails":
+                return archiveService.getAllDetails();
             default:
                 throw new IllegalArgumentException("Invalid operation: " + operation);
         }

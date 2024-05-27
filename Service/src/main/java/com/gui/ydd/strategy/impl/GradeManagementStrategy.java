@@ -54,6 +54,8 @@ public class GradeManagementStrategy implements ManagementStrategy<Grade> {
                 return response;
             case "getDetails":
                 return gradeService.getDetails((Integer) params.get("id"));
+            case "getAllDetails":
+                return gradeService.getAllDetails();
             default:
                 throw new IllegalArgumentException("Invalid operation: " + operation);
         }
