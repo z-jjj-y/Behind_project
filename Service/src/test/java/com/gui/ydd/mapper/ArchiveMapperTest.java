@@ -14,4 +14,9 @@ class ArchiveMapperTest {
     void selectDetailsById() {
         System.out.println(archiveMapper.selectDetailsById(1));
     }
+
+    @Test
+    void selectAllDetails() {
+        System.out.println(archiveMapper.selectAllDetails());
+    }
 }

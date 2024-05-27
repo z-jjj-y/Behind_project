@@ -13,4 +13,14 @@
                  JOIN users u ON ug.user_id = u.user_id
         WHERE ug.group_id = #{groupId}
     </select>
+
+    <select id="selectAllDetails" resultType="com.gui.ydd.entity.UserGroupDetails">
+        SELECT ug.group_id,
+               ug.group_name,
+               ug.description,
+               u.username AS leader_name,
+               ug.createdate
+        FROM user_groups ug
+                 JOIN users u ON ug.user_id = u.user_id
+    </select>
 </mapper>

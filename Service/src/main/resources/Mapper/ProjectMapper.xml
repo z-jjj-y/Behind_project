@@ -14,4 +14,15 @@
                  JOIN group_projects gp ON p.project_id = gp.project_id
         WHERE p.project_id = #{projectId}
     </select>
+
+    <select id="selectAllDetails" resultType="com.gui.ydd.entity.ProjectDetails">
+        SELECT p.project_id,
+               p.project_name,
+               p.description,
+               p.createdate,
+               gp.group_project_id,
+               gp.group_id
+        FROM projects p
+                 JOIN group_projects gp ON p.project_id = gp.project_id
+    </select>
 </mapper>

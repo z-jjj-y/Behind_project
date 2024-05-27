@@ -17,4 +17,18 @@
                       ON g.group_project_id = gp.group_project_id
         WHERE g.grade_id = #{gradeId}
     </select>
+
+    <select id="selectAllDetails" resultType="com.gui.ydd.entity.GradeDetails">
+        SELECT g.grade_id,
+               g.score,
+               g.comment,
+               g.createdate,
+               u.username AS teacher_name,
+               gp.group_id,
+               gp.project_id
+        FROM grades g
+                 JOIN users u ON g.teacher_id = u.user_id
+                 JOIN group_projects gp
+                      ON g.group_project_id = gp.group_project_id
+    </select>
 </mapper>

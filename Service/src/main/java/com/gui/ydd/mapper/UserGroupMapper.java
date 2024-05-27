@@ -6,7 +6,10 @@ import com.gui.ydd.entity.UserGroupDetails;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface UserGroupMapper extends BaseMapper<UserGroup> {
     UserGroupDetails selectDetailsById(@Param("groupId") int groupId);
+    List<UserGroupDetails> selectAllDetails();
 }

@@ -16,4 +16,15 @@
         WHERE gp.group_project_id = #{groupProjectId}
     </select>
 
+    <select id="selectAllDetails" resultType="com.gui.ydd.entity.GroupProjectDetails">
+        SELECT gp.group_project_id,
+               ug.group_name,
+               p.project_name,
+               gp.status,
+               gp.createdate
+        FROM group_projects gp
+                 JOIN user_groups ug ON gp.group_id = ug.group_id
+                 JOIN projects p ON gp.project_id = p.project_id
+    </select>
+
 </mapper>

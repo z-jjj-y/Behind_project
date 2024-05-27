@@ -16,4 +16,17 @@
                  JOIN projects p ON gp.project_id = p.project_id
         WHERE a.archive_id = #{archiveId}
     </select>
+
+    <select id="selectAllDetails" resultType="com.gui.ydd.entity.ArchiveDetails">
+        SELECT a.archive_id,
+               a.final_score,
+               a.rating,
+               a.createdate,
+               gp.group_id,
+               p.project_name
+        FROM archives a
+                 JOIN group_projects gp
+                      ON a.group_project_id = gp.group_project_id
+                 JOIN projects p ON gp.project_id = p.project_id
+    </select>
 </mapper>
