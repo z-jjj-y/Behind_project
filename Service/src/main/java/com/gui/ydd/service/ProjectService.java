@@ -6,11 +6,6 @@ import com.gui.ydd.entity.ProjectDetails;
 
 import java.util.List;
 
-public interface ProjectService extends IService<Project> {
-    List<Project> getAllProjects();
-    Project getProjectById(int projectId);
-    void createProject(Project project);
-    void updateProject(Project project);
-    void deleteProject(int projectId);
+public interface ProjectService extends BaseService<Project> {
     ProjectDetails getDetails(int projectId);
 }

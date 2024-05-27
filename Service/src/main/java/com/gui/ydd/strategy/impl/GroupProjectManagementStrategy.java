@@ -23,9 +23,9 @@ public class GroupProjectManagementStrategy implements ManagementStrategy<GroupP
         Map<String, Object> response = new HashMap<>();
         switch (operation) {
             case "getAll":
-                return groupProjectService.getAllGroupProjects();
+                return groupProjectService.getAll();
             case "getById":
-                return groupProjectService.getGroupProjectById((Integer) params.get("id"));
+                return groupProjectService.getById((Integer) params.get("id"));
             case "create":
                 GroupProject groupProject = new GroupProject.Builder()
                         .groupId((Integer) params.get("groupId"))
@@ -33,7 +33,7 @@ public class GroupProjectManagementStrategy implements ManagementStrategy<GroupP
                         .status((String) params.get("status"))
                         .createdate(new Date())
                         .build();
-                groupProjectService.createGroupProject(groupProject);
+                groupProjectService.create(groupProject);
                 response.put("message", "Create group project successful");
                 return response;
             case "update":
@@ -44,11 +44,11 @@ public class GroupProjectManagementStrategy implements ManagementStrategy<GroupP
                         .status((String) params.get("status"))
                         .createdate(new Date())
                         .build();
-                groupProjectService.updateGroupProject(updateGroupProject);
+                groupProjectService.update(updateGroupProject);
                 response.put("message", "Update group project successful");
                 return response;
             case "delete":
-                groupProjectService.deleteGroupProject((Integer) params.get("id"));
+                groupProjectService.delete((Integer) params.get("id"));
                 response.put("message", "Delete group project successful");
                 return response;
             case "getDetails":

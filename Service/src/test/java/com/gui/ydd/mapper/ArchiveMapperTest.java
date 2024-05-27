@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class ArchiveMapperTest {
 
@@ -13,7 +11,7 @@ class ArchiveMapperTest {
     ArchiveMapper archiveMapper;
 
     @Test
-    void selectArchiveDetails() {
-        System.out.println(archiveMapper.selectArchiveDetails(1));
+    void selectDetailsById() {
+        System.out.println(archiveMapper.selectDetailsById(1));
     }
 }

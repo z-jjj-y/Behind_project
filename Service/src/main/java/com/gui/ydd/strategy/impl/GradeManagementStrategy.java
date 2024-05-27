@@ -22,9 +22,9 @@ public class GradeManagementStrategy implements ManagementStrategy<Grade> {
         Map<String, Object> response = new HashMap<>();
         switch (operation) {
             case "getAll":
-                return gradeService.getAllGrades();
+                return gradeService.getAll();
             case "getById":
-                return gradeService.getGradeById((Integer) params.get("id"));
+                return gradeService.getById((Integer) params.get("id"));
             case "create":
                 Grade grade = new Grade.Builder()
                         .groupProjectId((Integer) params.get("groupProjectId"))
@@ -33,7 +33,7 @@ public class GradeManagementStrategy implements ManagementStrategy<Grade> {
                         .comment((String) params.get("comment"))
                         .createdate(new Date())
                         .build();
-                gradeService.createGrade(grade);
+                gradeService.create(grade);
                 response.put("message", "Create grade successful");
                 return response;
             case "update":
@@ -45,11 +45,11 @@ public class GradeManagementStrategy implements ManagementStrategy<Grade> {
                         .comment((String) params.get("comment"))
                         .createdate(new Date())
                         .build();
-                gradeService.updateGrade(updateGrade);
+                gradeService.update(updateGrade);
                 response.put("message", "Update grade successful");
                 return response;
             case "delete":
-                gradeService.deleteGrade((Integer) params.get("id"));
+                gradeService.delete((Integer) params.get("id"));
                 response.put("message", "Delete grade successful");
                 return response;
             case "getDetails":

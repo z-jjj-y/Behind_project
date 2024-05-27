@@ -23,9 +23,9 @@ public class UserGroupManagementStrategy implements ManagementStrategy<UserGroup
         Map<String,Object> response  = new HashMap<>();
         switch (operation) {
             case "getAll":
-                return userGroupService.getAllUserGroups();
+                return userGroupService.getAll();
             case "getById":
-                return userGroupService.getUserGroupById((Integer) params.get("id"));
+                return userGroupService.getById((Integer) params.get("id"));
             case "create":
                 UserGroup userGroup = new UserGroup.Builder()
                         .groupName((String) params.get("groupName"))
@@ -34,7 +34,7 @@ public class UserGroupManagementStrategy implements ManagementStrategy<UserGroup
                         .role((String) params.get("role"))
                         .createdate(new Date())
                         .build();
-                userGroupService.createUserGroup(userGroup);
+                userGroupService.create(userGroup);
                 response.put("message","Create user group successful");
                 return response;
             case "update":
@@ -46,11 +46,11 @@ public class UserGroupManagementStrategy implements ManagementStrategy<UserGroup
                         .role((String) params.get("role"))
                         .createdate(new Date())
                         .build();
-                userGroupService.updateUserGroup(updateUserGroup);
+                userGroupService.update(updateUserGroup);
                 response.put("message","Update user group successful");
                 return response;
             case "delete":
-                userGroupService.deleteUserGroup((Integer) params.get("id"));
+                userGroupService.delete((Integer) params.get("id"));
                 response.put("message","Delete user group successful");
                 return response;
             case "getDetails":

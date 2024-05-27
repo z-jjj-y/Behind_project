@@ -6,11 +6,6 @@ import com.gui.ydd.entity.UserGroupDetails;
 
 import java.util.List;
 
-public interface UserGroupService extends IService<UserGroup> {
-    List<UserGroup> getAllUserGroups();
-    UserGroup getUserGroupById(int groupId);
-    void createUserGroup(UserGroup userGroup);
-    void updateUserGroup(UserGroup userGroup);
-    void deleteUserGroup(int groupId);
+public interface UserGroupService extends BaseService<UserGroup> {
     UserGroupDetails getDetails(int groupId);
 }

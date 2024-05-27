@@ -23,16 +23,16 @@ public class ProjectManagementStrategy implements ManagementStrategy<Project> {
         Map<String, Object> response = new HashMap<>();
         switch (operation) {
             case "getAll":
-                return projectService.getAllProjects();
+                return projectService.getAll();
             case "getById":
-                return projectService.getProjectById((Integer) params.get("id"));
+                return projectService.getById((Integer) params.get("id"));
             case "create":
                 Project project = new Project.Builder()
                         .projectName((String) params.get("projectName"))
                         .description((String) params.get("description"))
                         .createdate(new Date())
                         .build();
-                projectService.createProject(project);
+                projectService.create(project);
                 response.put("message", "Create project successful");
                 return response;
             case "update":
@@ -42,11 +42,11 @@ public class ProjectManagementStrategy implements ManagementStrategy<Project> {
                         .description((String) params.get("description"))
                         .createdate(new Date())
                         .build();
-                projectService.updateProject(updateProject);
+                projectService.update(updateProject);
                 response.put("message", "Update project successful");
                 return response;
             case "delete":
-                projectService.deleteProject((Integer) params.get("id"));
+                projectService.delete((Integer) params.get("id"));
                 response.put("message", "Delete project successful");
                 return response;
             case "getDetails":

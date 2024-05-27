@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface ReviewMapper extends BaseMapper<Review> {
-    ReviewDetails selectReviewDetails(@Param("reviewId") int reviewId);
+    ReviewDetails selectDetailsById(@Param("reviewId") int reviewId);
 }

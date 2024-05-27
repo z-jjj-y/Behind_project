@@ -6,11 +6,6 @@ import com.gui.ydd.entity.ArchiveDetails;
 
 import java.util.List;
 
-public interface ArchiveService extends IService<Archive> {
-    List<Archive> getAllArchives();
-    Archive getArchiveById(int archiveId);
-    void createArchive(Archive archive);
-    void updateArchive(Archive archive);
-    void deleteArchive(int archiveId);
+public interface ArchiveService extends BaseService<Archive> {
     ArchiveDetails getDetails(int archiveId);
 }

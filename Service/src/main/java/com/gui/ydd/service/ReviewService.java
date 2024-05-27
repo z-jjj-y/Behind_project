@@ -6,11 +6,6 @@ import com.gui.ydd.entity.ReviewDetails;
 
 import java.util.List;
 
-public interface ReviewService extends IService<Review> {
-    List<Review> getAllReviews();
-    Review getReviewById(int reviewId);
-    void createReview(Review review);
-    void updateReview(Review review);
-    void deleteReview(int reviewId);
+public interface ReviewService extends BaseService<Review> {
     ReviewDetails getDetails(int reviewId);
 }

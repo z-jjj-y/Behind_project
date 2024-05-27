@@ -23,9 +23,9 @@ public class ArchiveStrategy implements ManagementStrategy<Archive> {
         Map<String, Object> response = new HashedMap<>();
         switch (operation) {
             case "getAll":
-                return archiveService.getAllArchives();
+                return archiveService.getAll();
             case "getById":
-                return archiveService.getArchiveById((Integer) params.get("id"));
+                return archiveService.getById((Integer) params.get("id"));
             case "create":
                 Archive archive = new Archive.Builder()
                         .finalScore((Integer) params.get("finalScore"))
@@ -33,7 +33,7 @@ public class ArchiveStrategy implements ManagementStrategy<Archive> {
                         .groupProjectId((Integer) params.get("groupProjectId"))
                         .rating((String) params.get("rating"))
                         .build();
-                archiveService.createArchive(archive);
+                archiveService.create(archive);
                 response.put("message", "Create archive successful");
                 return response;
             case "update":
@@ -44,11 +44,11 @@ public class ArchiveStrategy implements ManagementStrategy<Archive> {
                         .groupProjectId((Integer) params.get("groupProjectId"))
                         .rating((String) params.get("rating"))
                         .build();
-                archiveService.updateArchive(updateArchive);
+                archiveService.update(updateArchive);
                 response.put("message", "Update archive successful");
                 return response;
             case "delete":
-                archiveService.deleteArchive((Integer) params.get("id"));
+                archiveService.delete((Integer) params.get("id"));
                 response.put("message", "Delete archive successful");
                 return response;
             case "getDetails":

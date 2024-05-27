@@ -19,7 +19,7 @@ class GradeServiceTest {
     @Test
     void getAllGrades() {
         GradeService gradeService = serviceFactory.createGradeService();
-        List<Grade> grades = gradeService.getAllGrades();
+        List<Grade> grades = gradeService.getAll();
         for (Grade grade : grades) {
             System.out.println(grade);
         }
@@ -28,7 +28,7 @@ class GradeServiceTest {
     @Test
     void getGradeById() {
         GradeService gradeService = serviceFactory.createGradeService();
-        Grade grade = gradeService.getGradeById(1);
+        Grade grade = gradeService.getById(1);
         System.out.println(grade);
     }
 
@@ -36,23 +36,23 @@ class GradeServiceTest {
     void createGrade() {
         GradeService gradeService = serviceFactory.createGradeService();
         Grade grade = new Grade.Builder().gradeId(1).groupProjectId(1).teacherId(1).score(100).comment("Good").createdate(null).build();
-        gradeService.createGrade(grade);
-        assertNotNull(gradeService.getGradeById(1), "Grade should not be null");
+        gradeService.create(grade);
+        assertNotNull(gradeService.getById(1), "Grade should not be null");
     }
 
     @Test
     void updateGrade() {
         GradeService gradeService = serviceFactory.createGradeService();
-        Grade grade = gradeService.getGradeById(1);
+        Grade grade = gradeService.getById(1);
         grade.setScore(90);
-        gradeService.updateGrade(grade);
-        assertEquals(90, gradeService.getGradeById(1).getScore(), "Score should be updated");
+        gradeService.update(grade);
+        assertEquals(90, gradeService.getById(1).getScore(), "Score should be updated");
     }
 
     @Test
     void deleteGrade() {
         GradeService gradeService = serviceFactory.createGradeService();
-        gradeService.deleteGrade(5);
-        assertNull(gradeService.getGradeById(5), "Grade should be deleted");
+        gradeService.delete(5);
+        assertNull(gradeService.getById(5), "Grade should be deleted");
     }
 }

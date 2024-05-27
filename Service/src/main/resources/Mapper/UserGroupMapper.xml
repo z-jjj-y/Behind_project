@@ -2,7 +2,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gui.ydd.mapper.UserGroupMapper">
-    <select id="selectUserGroupDetails"
+    <select id="selectDetailsById"
             resultType="com.gui.ydd.entity.UserGroupDetails">
         SELECT ug.group_id,
                ug.group_name,

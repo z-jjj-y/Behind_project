@@ -23,9 +23,9 @@ public class ReviewManagementStrategy implements ManagementStrategy<Review> {
         Map<String, Object> response = new HashMap<>();
         switch (operation) {
             case "getAll":
-                return reviewService.getAllReviews();
+                return reviewService.getAll();
             case "getById":
-                return reviewService.getReviewById((Integer) params.get("id"));
+                return reviewService.getById((Integer) params.get("id"));
             case "create":
                 Review review = new Review.Builder()
                         .reviewerId((Integer) params.get("reviewerId"))
@@ -34,7 +34,7 @@ public class ReviewManagementStrategy implements ManagementStrategy<Review> {
                         .comment((String) params.get("comment"))
                         .createdate(new Date())
                         .build();
-                reviewService.createReview(review);
+                reviewService.create(review);
                 response.put("message", "Create review successful");
                 return response;
             case "update":
@@ -46,11 +46,11 @@ public class ReviewManagementStrategy implements ManagementStrategy<Review> {
                         .comment((String) params.get("comment"))
                         .createdate(new Date())
                         .build();
-                reviewService.updateReview(updateReview);
+                reviewService.update(updateReview);
                 response.put("message", "Update review successful");
                 return response;
             case "delete":
-                reviewService.deleteReview((Integer) params.get("id"));
+                reviewService.delete((Integer) params.get("id"));
                 response.put("message", "Delete review successful");
                 return response;
             case "getDetails":

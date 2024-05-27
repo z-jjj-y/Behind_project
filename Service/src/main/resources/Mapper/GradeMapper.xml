@@ -2,7 +2,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gui.ydd.mapper.GradeMapper">
-    <select id="selectGradeDetails"
+    <select id="selectDetailsById"
             resultType="com.gui.ydd.entity.GradeDetails">
         SELECT g.grade_id,
                g.score,

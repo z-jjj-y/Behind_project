@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserGroupMapper extends BaseMapper<UserGroup> {
-    UserGroupDetails selectUserGroupDetails(@Param("groupId") int groupId);
+    UserGroupDetails selectDetailsById(@Param("groupId") int groupId);
 }

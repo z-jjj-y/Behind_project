@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface GroupProjectMapper extends BaseMapper<GroupProject> {
-    GroupProjectDetails selectGroupProjectDetails(@Param("groupProjectId") int groupProjectId);
+    GroupProjectDetails selectDetailsById(@Param("groupProjectId") int groupProjectId);
 }

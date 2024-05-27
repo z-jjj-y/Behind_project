@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class UserGroupMapperTest {
 
@@ -13,7 +11,7 @@ class UserGroupMapperTest {
     UserGroupMapper userGroupMapper;
 
     @Test
-    void selectUserGroupDetails() {
-        System.out.println(userGroupMapper.selectUserGroupDetails(1));
+    void selectDetailsById() {
+        System.out.println(userGroupMapper.selectDetailsById(1));
     }
 }

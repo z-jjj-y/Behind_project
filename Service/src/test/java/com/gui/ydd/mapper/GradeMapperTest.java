@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class GradeMapperTest {
 
@@ -13,7 +11,7 @@ class GradeMapperTest {
     GradeMapper gradeMapper;
 
     @Test
-    void selectGradeDetails() {
-        System.out.println(gradeMapper.selectGradeDetails(1));
+    void selectDetailsById() {
+        System.out.println(gradeMapper.selectDetailsById(1));
     }
 }

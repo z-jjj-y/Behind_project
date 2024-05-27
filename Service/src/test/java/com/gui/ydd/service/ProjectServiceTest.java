@@ -17,7 +17,7 @@ class ProjectServiceTest {
                 .projectName("Test Project")
                 .description("This is a test project")
                 .build();
-        projectService.createProject(project);
+        projectService.create(project);
 
     }
 

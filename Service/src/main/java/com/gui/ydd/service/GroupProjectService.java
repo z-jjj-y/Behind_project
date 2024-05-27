@@ -6,11 +6,6 @@ import com.gui.ydd.entity.GroupProjectDetails;
 
 import java.util.List;
 
-public interface GroupProjectService extends IService<GroupProject> {
-    List<GroupProject> getAllGroupProjects();
-    GroupProject getGroupProjectById(int groupProjectId);
-    void createGroupProject(GroupProject groupProject);
-    void updateGroupProject(GroupProject groupProject);
-    void deleteGroupProject(int groupProjectId);
+public interface GroupProjectService extends BaseService<GroupProject> {
     GroupProjectDetails getDetails(int groupProjectId);
 }

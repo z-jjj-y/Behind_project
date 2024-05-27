@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface ArchiveMapper extends BaseMapper<Archive> {
-    ArchiveDetails selectArchiveDetails(@Param("archiveId") int archiveId);
+    ArchiveDetails selectDetailsById(@Param("archiveId") int archiveId);
 }
