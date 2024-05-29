@@ -4,20 +4,21 @@ import com.gui.ydd.entity.User;
 import com.gui.ydd.factory.ServiceFactory;
 import com.gui.ydd.filter.Filter;
 import com.gui.ydd.filter.LoginValidationFilter;
+import com.gui.ydd.strategy.UserStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 @Component
-public class UserStrategy {
+public class UserStrategyImpl {
 
     @Autowired
     private ServiceFactory serviceFactory;
 
     private List<Filter> filters;
 
-    public UserStrategy() {
+    public UserStrategyImpl() {
         filters = new ArrayList<>();
         filters.add(new LoginValidationFilter());
     }
