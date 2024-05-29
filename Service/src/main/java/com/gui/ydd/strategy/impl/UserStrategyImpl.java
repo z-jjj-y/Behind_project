@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 @Component
-public class UserStrategyImpl {
+public class UserStrategyImpl implements UserStrategy{
 
     @Autowired
     private ServiceFactory serviceFactory;
