@@ -7,7 +7,8 @@
         SELECT ug.group_id,
                ug.group_name,
                ug.description,
-               u.username AS leader_name,
+               u.username,
+               ug.role,
                ug.createdate
         FROM user_groups ug
                  JOIN users u ON ug.user_id = u.user_id
@@ -18,9 +19,23 @@
         SELECT ug.group_id,
                ug.group_name,
                ug.description,
-               u.username AS leader_name,
+               u.username,
+               ug.role,
                ug.createdate
         FROM user_groups ug
                  JOIN users u ON ug.user_id = u.user_id
+    </select>
+
+    <select id="selectAllDetailsByName"
+            resultType="com.gui.ydd.entity.UserGroupDetails">
+        SELECT ug.group_id,
+               ug.group_name,
+               ug.description,
+               u.username,
+               ug.role,
+               ug.createdate
+        FROM user_groups ug
+                 JOIN users u ON ug.user_id = u.user_id
+        WHERE ug.group_name LIKE CONCAT('%', #{groupName}, '%')
     </select>
 </mapper>

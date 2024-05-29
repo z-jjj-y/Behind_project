@@ -57,6 +57,8 @@ public class UserGroupManagementStrategy implements ManagementStrategy<UserGroup
                 return userGroupService.getDetails((Integer) params.get("id"));
             case "getAllDetails":
                 return userGroupService.getAllDetails();
+            case "getAllDetailsByName":
+                return userGroupService.getAllDetailsByName((String) params.get("groupName"));
             default:
                 throw new IllegalArgumentException("Invalid operation: " + operation);
         }

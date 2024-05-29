@@ -21,4 +21,8 @@ public class UserGroupServiceImpl extends BaseServiceImpl<UserGroupMapper, UserG
     public List<UserGroupDetails> getAllDetails() {
         return baseMapper.selectAllDetails();
     }
+
+    public List<UserGroupDetails> getAllDetailsByName(String groupName){
+        return baseMapper.selectAllDetailsByName(groupName);
+    }
 }

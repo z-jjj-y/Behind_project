@@ -52,8 +52,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public User login(String account, String password) {
-        return lambdaQuery().eq(User::getAccount, account).eq(User::getPassword, password).one();
+    public User login(String account, String password,String role) {
+        return lambdaQuery().eq(User::getAccount, account).eq(User::getPassword, password).eq(User::getRole, role).one();
     }
 
 }

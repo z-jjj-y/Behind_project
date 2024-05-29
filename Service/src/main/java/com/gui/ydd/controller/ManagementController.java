@@ -57,4 +57,9 @@ public class ManagementController {
     public Object getAllDetails(@PathVariable String type) {
         return executeStrategy(type, "getAllDetails", new HashMap<>());
     }
+
+    @PostMapping("/{type}/getAllDetailsByName")
+    public Object getDetailsByName(@PathVariable String type, @RequestBody Map<String, Object> requestBody) {
+        return executeStrategy(type, "getAllDetailsByName", requestBody);
+    }
 }

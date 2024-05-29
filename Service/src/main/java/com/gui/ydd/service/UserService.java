@@ -10,6 +10,6 @@ public interface UserService extends IService<User> {
     User getUserById(int userId);
     void updateUser(User user);
     void deleteUser(int userId);
-    User login(String account, String password);
+    User login(String account, String password, String role);
     User register(User user);
 }

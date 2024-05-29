@@ -12,4 +12,5 @@ import java.util.List;
 public interface UserGroupMapper extends BaseMapper<UserGroup> {
     UserGroupDetails selectDetailsById(@Param("groupId") int groupId);
     List<UserGroupDetails> selectAllDetails();
+    List<UserGroupDetails> selectAllDetailsByName(@Param("groupName") String groupName);
 }

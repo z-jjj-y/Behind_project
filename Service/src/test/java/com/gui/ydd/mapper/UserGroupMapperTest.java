@@ -14,4 +14,9 @@ class UserGroupMapperTest {
     void selectDetailsById() {
         System.out.println(userGroupMapper.selectDetailsById(1));
     }
+
+    @Test
+    void selectAllDetailsByName(){
+        System.out.println(userGroupMapper.selectAllDetailsByName("小组1"));
+    }
 }
