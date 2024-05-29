@@ -20,47 +20,81 @@ public class UserGroupManagementStrategy implements ManagementStrategy<UserGroup
     @Override
     public Object execute(String operation, Map<String, Object> params) {
         UserGroupService userGroupService = serviceFactory.createUserGroupService();
-        Map<String, Object> response = new HashMap<>();
         switch (operation) {
             case "getAll":
-                return userGroupService.getAll();
+                return getAll(userGroupService);
             case "getById":
-                return userGroupService.getById((Integer) params.get("id"));
+                return getById(userGroupService, params);
             case "create":
-                UserGroup userGroup = new UserGroup.Builder()
-                        .groupName((String) params.get("groupName"))
-                        .description((String) params.get("description"))
-                        .userId((Integer) params.get("userId"))
-                        .role((String) params.get("role"))
-                        .createdate(new Date())
-                        .build();
-                userGroupService.create(userGroup);
-                response.put("message", "Create user group successful");
-                return response;
+                return create(userGroupService, params);
             case "update":
-                UserGroup updateUserGroup = new UserGroup.Builder()
-                        .groupId((Integer) params.get("groupId"))
-                        .groupName((String) params.get("groupName"))
-                        .description((String) params.get("description"))
-                        .userId((Integer) params.get("userId"))
-                        .role((String) params.get("role"))
-                        .createdate(new Date())
-                        .build();
-                userGroupService.update(updateUserGroup);
-                response.put("message", "Update user group successful");
-                return response;
+                return update(userGroupService, params);
             case "delete":
-                userGroupService.delete((Integer) params.get("id"));
-                response.put("message", "Delete user group successful");
-                return response;
+                return delete(userGroupService, params);
             case "getDetails":
-                return userGroupService.getDetails((Integer) params.get("id"));
+                return getDetails(userGroupService, params);
             case "getAllDetails":
-                return userGroupService.getAllDetails();
+                return getAllDetails(userGroupService);
             case "getAllDetailsByName":
-                return userGroupService.getAllDetailsByName((String) params.get("groupName"));
+                return getAllDetailsByName(userGroupService, params);
             default:
                 throw new IllegalArgumentException("Invalid operation: " + operation);
         }
+    }
+
+    private Object getAll(UserGroupService userGroupService) {
+        return userGroupService.getAll();
+    }
+
+    private Object getById(UserGroupService userGroupService, Map<String, Object> params) {
+        return userGroupService.getById((Integer) params.get("id"));
+    }
+
+    private Object create(UserGroupService userGroupService, Map<String, Object> params) {
+        UserGroup userGroup = new UserGroup.Builder()
+                .groupName((String) params.get("groupName"))
+                .description((String) params.get("description"))
+                .userId((Integer) params.get("userId"))
+                .role((String) params.get("role"))
+                .createdate(new Date())
+                .build();
+        userGroupService.create(userGroup);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Create user group successful");
+        return response;
+    }
+
+    private Object update(UserGroupService userGroupService, Map<String, Object> params) {
+        UserGroup updateUserGroup = new UserGroup.Builder()
+                .groupId((Integer) params.get("groupId"))
+                .groupName((String) params.get("groupName"))
+                .description((String) params.get("description"))
+                .userId((Integer) params.get("userId"))
+                .role((String) params.get("role"))
+                .createdate(new Date())
+                .build();
+        userGroupService.update(updateUserGroup);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Update user group successful");
+        return response;
+    }
+
+    private Object delete(UserGroupService userGroupService, Map<String, Object> params) {
+        userGroupService.delete((Integer) params.get("id"));
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Delete user group successful");
+        return response;
+    }
+
+    private Object getDetails(UserGroupService userGroupService, Map<String, Object> params) {
+        return userGroupService.getDetails((Integer) params.get("id"));
+    }
+
+    private Object getAllDetails(UserGroupService userGroupService) {
+        return userGroupService.getAllDetails();
+    }
+
+    private Object getAllDetailsByName(UserGroupService userGroupService, Map<String, Object> params) {
+        return userGroupService.getAllDetailsByName((String) params.get("groupName"));
     }
 }

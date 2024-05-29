@@ -20,43 +20,73 @@ public class GroupProjectManagementStrategy implements ManagementStrategy<GroupP
     @Override
     public Object execute(String operation, Map<String, Object> params) {
         GroupProjectService groupProjectService = serviceFactory.createGroupProjectService();
-        Map<String, Object> response = new HashMap<>();
         switch (operation) {
             case "getAll":
-                return groupProjectService.getAll();
+                return getAll(groupProjectService);
             case "getById":
-                return groupProjectService.getById((Integer) params.get("id"));
+                return getById(groupProjectService, params);
             case "create":
-                GroupProject groupProject = new GroupProject.Builder()
-                        .groupId((Integer) params.get("groupId"))
-                        .projectId((Integer) params.get("projectId"))
-                        .status((String) params.get("status"))
-                        .createdate(new Date())
-                        .build();
-                groupProjectService.create(groupProject);
-                response.put("message", "Create group project successful");
-                return response;
+                return create(groupProjectService, params);
             case "update":
-                GroupProject updateGroupProject = new GroupProject.Builder()
-                        .groupProjectId((Integer) params.get("groupProjectId"))
-                        .groupId((Integer) params.get("groupId"))
-                        .projectId((Integer) params.get("projectId"))
-                        .status((String) params.get("status"))
-                        .createdate(new Date())
-                        .build();
-                groupProjectService.update(updateGroupProject);
-                response.put("message", "Update group project successful");
-                return response;
+                return update(groupProjectService, params);
             case "delete":
-                groupProjectService.delete((Integer) params.get("id"));
-                response.put("message", "Delete group project successful");
-                return response;
+                return delete(groupProjectService, params);
             case "getDetails":
-                return groupProjectService.getDetails((Integer) params.get("id"));
+                return getDetails(groupProjectService, params);
             case "getAllDetails":
-                return groupProjectService.getAllDetails();
+                return getAllDetails(groupProjectService);
             default:
                 throw new IllegalArgumentException("Invalid operation: " + operation);
         }
+    }
+
+    private Object getAll(GroupProjectService groupProjectService) {
+        return groupProjectService.getAll();
+    }
+
+    private Object getById(GroupProjectService groupProjectService, Map<String, Object> params) {
+        return groupProjectService.getById((Integer) params.get("id"));
+    }
+
+    private Object create(GroupProjectService groupProjectService, Map<String, Object> params) {
+        GroupProject groupProject = new GroupProject.Builder()
+                .groupId((Integer) params.get("groupId"))
+                .projectId((Integer) params.get("projectId"))
+                .status((String) params.get("status"))
+                .createdate(new Date())
+                .build();
+        groupProjectService.create(groupProject);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Create group project successful");
+        return response;
+    }
+
+    private Object update(GroupProjectService groupProjectService, Map<String, Object> params) {
+        GroupProject updateGroupProject = new GroupProject.Builder()
+                .groupProjectId((Integer) params.get("groupProjectId"))
+                .groupId((Integer) params.get("groupId"))
+                .projectId((Integer) params.get("projectId"))
+                .status((String) params.get("status"))
+                .createdate(new Date())
+                .build();
+        groupProjectService.update(updateGroupProject);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Update group project successful");
+        return response;
+    }
+
+    private Object delete(GroupProjectService groupProjectService, Map<String, Object> params) {
+        groupProjectService.delete((Integer) params.get("id"));
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Delete group project successful");
+        return response;
+    }
+
+    private Object getDetails(GroupProjectService groupProjectService, Map<String, Object> params) {
+        return groupProjectService.getDetails((Integer) params.get("id"));
+    }
+
+    private Object getAllDetails(GroupProjectService groupProjectService) {
+        return groupProjectService.getAllDetails();
     }
 }

@@ -20,41 +20,71 @@ public class ProjectManagementStrategy implements ManagementStrategy<Project> {
     @Override
     public Object execute(String operation, Map<String, Object> params) {
         ProjectService projectService = serviceFactory.createProjectService();
-        Map<String, Object> response = new HashMap<>();
         switch (operation) {
             case "getAll":
-                return projectService.getAll();
+                return getAll(projectService);
             case "getById":
-                return projectService.getById((Integer) params.get("id"));
+                return getById(projectService, params);
             case "create":
-                Project project = new Project.Builder()
-                        .projectName((String) params.get("projectName"))
-                        .description((String) params.get("description"))
-                        .createdate(new Date())
-                        .build();
-                projectService.create(project);
-                response.put("message", "Create project successful");
-                return response;
+                return create(projectService, params);
             case "update":
-                Project updateProject = new Project.Builder()
-                        .projectId((Integer) params.get("projectId"))
-                        .projectName((String) params.get("projectName"))
-                        .description((String) params.get("description"))
-                        .createdate(new Date())
-                        .build();
-                projectService.update(updateProject);
-                response.put("message", "Update project successful");
-                return response;
+                return update(projectService, params);
             case "delete":
-                projectService.delete((Integer) params.get("id"));
-                response.put("message", "Delete project successful");
-                return response;
+                return delete(projectService, params);
             case "getDetails":
-                return projectService.getDetails((Integer) params.get("id"));
+                return getDetails(projectService, params);
             case "getAllDetails":
-                return projectService.getAllDetails();
+                return getAllDetails(projectService);
             default:
                 throw new IllegalArgumentException("Invalid operation: " + operation);
         }
+    }
+
+    private Object getAll(ProjectService projectService) {
+        return projectService.getAll();
+    }
+
+    private Object getById(ProjectService projectService, Map<String, Object> params) {
+        return projectService.getById((Integer) params.get("id"));
+    }
+
+    private Object create(ProjectService projectService, Map<String, Object> params) {
+        Project project = new Project.Builder()
+                .projectName((String) params.get("projectName"))
+                .description((String) params.get("description"))
+                .createdate(new Date())
+                .build();
+        projectService.create(project);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Create project successful");
+        return response;
+    }
+
+    private Object update(ProjectService projectService, Map<String, Object> params) {
+        Project updateProject = new Project.Builder()
+                .projectId((Integer) params.get("projectId"))
+                .projectName((String) params.get("projectName"))
+                .description((String) params.get("description"))
+                .createdate(new Date())
+                .build();
+        projectService.update(updateProject);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Update project successful");
+        return response;
+    }
+
+    private Object delete(ProjectService projectService, Map<String, Object> params) {
+        projectService.delete((Integer) params.get("id"));
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Delete project successful");
+        return response;
+    }
+
+    private Object getDetails(ProjectService projectService, Map<String, Object> params) {
+        return projectService.getDetails((Integer) params.get("id"));
+    }
+
+    private Object getAllDetails(ProjectService projectService) {
+        return projectService.getAllDetails();
     }
 }
